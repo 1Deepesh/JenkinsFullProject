@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     sh "pwd"
-                    setDeployEnv = load 'src/main/groovy/setDeployEnv.groovy'
+                    setDeployEnv = load ('src/main/groovy/setDeployEnv.groovy')
                 }
             }
         }
@@ -30,8 +30,8 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: "$BRANCH_NAME"]], extensions: [], gitTool: 'Default', userRemoteConfigs: [[credentialsId: "$GITLAB_CREDENTIALS", url: "$APP_GIT_URL"]]])
                 }
         }
-            }
-        }
+            
+        
         stage('printEnvVars') {
             steps {
                 script {
