@@ -18,6 +18,8 @@ pipeline {
                 script {
                     sh "pwd"
                     setDeployEnv = load ('src/main/groovy/setDeployEnv.groovy')
+                    setDeployEnv.readEnvVariables()
+
                 }
             }
         }
