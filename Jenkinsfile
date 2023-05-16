@@ -37,7 +37,7 @@ pipeline {
         stage('printEnvVars') {
             steps {
                 script {
-                    print ("The application name is : $APP_NAME")
+                    println ("The application name is : $APP_NAME")
                 }
             }
         }
