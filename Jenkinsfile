@@ -17,13 +17,15 @@ pipeline {
             steps {
                 script {
                     sh "pwd"
-                    setDeployEnv = load ('src/main/groovy/setDeployEnv.groovy')
-                    setDeployEnv.readEnvVariables()
 
                     // check files in your workspace
                     println ("Your workspace is " + WORKSPACE)
                     sh "cd $WORKSPACE"
                     sh "ls -ltrh "
+                    setDeployEnv = load ('src/main/groovy/setDeployEnv.groovy')
+                    // setDeployEnv.readEnvVariables()
+
+
 
                 }
             }
@@ -36,6 +38,9 @@ pipeline {
                     
                     GIT_APP_URL = params.GIT_APP_URL           
                     checkout([$class: 'GitSCM', branches: [[name: "$BRANCH_NAME"]], extensions: [], gitTool: 'Default', userRemoteConfigs: [[credentialsId: "$GITLAB_CREDENTIALS", url: "$APP_GIT_URL"]]])
+
+                    echo $WORKSPACE
+                    sh "ls -ltrh"
                 }
             }
         }
