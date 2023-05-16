@@ -20,6 +20,11 @@ pipeline {
                     setDeployEnv = load ('src/main/groovy/setDeployEnv.groovy')
                     setDeployEnv.readEnvVariables()
 
+                    // check files in your workspace
+                    println ("Your workspace is " + WORKSPACE)
+                    sh "cd $WORKSPACE"
+                    sh "ls -ltrh "
+
                 }
             }
         }
