@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     sh "pwd"
-                    setDeployEnv = load('src\main\groovy\setDeployEnv.groovy')
+                    setDeployEnv = load 'src\main\groovy\setDeployEnv.groovy'
                 }
             }
         }
